@@ -1,15 +1,10 @@
-import javax.persistence.*;
-
 /**
- * 用户实体类 - 映射数据库中的users表
+ * 用户实体类
  *
  * 核心作用：
- * 1. 定义数据库表结构到Java对象的映射关系
- * 2. 作为数据操作的载体（存储、传输）
- * 3. 封装业务数据模型
+ * 1. 作为数据操作的载体（存储、传输）
+ * 2. 封装业务数据模型
  */
-@Entity // 标记为JPA实体 - 告诉JPA这个类对应数据库中的一张表
-@Table(name = "users") // 指定映射的表名（如果省略，默认使用类名）
 public class User {
 
     // --------------------------------------------
@@ -26,8 +21,6 @@ public class User {
      * private - 访问修饰符：表示该字段只能在当前类内部访问（封装性）
      * Long - 包装类型：表示长整型数字（64位），比基本类型long更安全（可处理null值）
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 主键
 
     /**
@@ -38,7 +31,6 @@ public class User {
      *   nullable = false：数据库列不允许为NULL
      *   length = 50：数据库列最大长度（varchar(50)）
      */
-    @Column(name = "username", nullable = false, length = 50)
     private String username;
 
     /**
@@ -46,7 +38,6 @@ public class User {
      *
      * unique = true：数据库列值必须唯一（相当于数据库唯一约束）
      */
-    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
     // --------------------------------------------
